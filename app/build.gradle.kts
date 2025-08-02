@@ -43,9 +43,10 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     packaging {
         resources {
@@ -55,7 +56,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.places)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -79,15 +82,21 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.coil.compose)
+//    implementation(libs.coil.network)
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0")
 
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.retrofit)
+    implementation ("com.squareup.retrofit2:converter-kotlinx-serialization:3.0.0")
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)  // Добавлено для Flow
     implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.androidx.core.splashscreen)
+
+//    kapt(libs.javapoet)  // Если нужен, иначе удали
 }
